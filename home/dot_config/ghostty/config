@@ -1,0 +1,6 @@
+font-family = FiraCode Nerd Font Mono Reg
+font-feature = -calt, -liga, -dlig
+font-size = 12
+background-opacity = 0.95
+window-inherit-working-directory = false
+working-directory = home
