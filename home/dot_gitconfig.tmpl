@@ -4,8 +4,8 @@
   signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5KrNrrXpU9sEXbhliBYt1bC4a49R876uTLYrV2mlOEXt2gPovN3FROmMqpOqpBbTmfgBDR9I2BX4d05DoULQxLElypEYzog+dFnN/AcG/b2apD27JS+FregGL2EQlNyfnE7WV0XfywAcnHUR4I56rMK5ErbRH6jC7XGl/LS4aejrBsb8HFzqluntU7O1R5nyyjPJhQFBmrkpL4Vuv4ZSPGjZOp7pBy7u4drHHdfdtJ8aR54JMsO6xAKo+aMB1ifSWGyEzVkRkXbO6fxF8k+n7eduosJJlXFgfwCuSoRmK/F+3tcadI0bJAAvluGGWeEyh7xloM/4zyJ5bk+08pty3NI55bKT7Md+3DZytF3F/mHQTFMRU0M6AeFkw0Dfretyv3Agsi37uDKqgGVqXrd3rNSEmm/0HDA4sbVI/AIR+GVncChutBA7goBRFubIC48w+B7ngxtqLmNekAcqaz2HmvNnRuR0lHwhuAaKfuwey7NbOz/8KXgezrS+mOsrSjEM=
 [core]
   autocrlf = input
-  editor = nano
-  excludesfile = ~/.gitignore_global
+  editor = nvim
+  excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
 [commit]
   gpgsign = true
 [format]
