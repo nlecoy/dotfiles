@@ -19,3 +19,16 @@ Host 172.16.*.*
 Host 10.*.*.*
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
+
+host *.vra
+    User nicolasl
+    ServerAliveInterval 300
+    ServerAliveCountMax 2
+    IdentityFile ~/.ssh/id_ed25519
+    port 22211
+host *.b47ch.com
+    User nicolasl
+    ServerAliveInterval 300
+    ServerAliveCountMax 2
+    IdentityFile ~/.ssh/id_ed25519
+    port 22211
