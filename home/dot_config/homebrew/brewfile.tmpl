@@ -1,0 +1,14 @@
+{{- $all := merge (deepCopy .brew.common) (index .brew .machine) -}}
+{{- range $name, $spec := $all }}
+{{-   if eq (kindOf $spec) "map" }}
+{{-     if eq $spec.kind "tap" }}
+tap "{{ $name }}"{{ if $spec.url }}, "{{ $spec.url }}"{{ else }}, trusted: true{{ end }}
+{{-     end }}
+{{-   else if eq $spec "tap" }}
+tap "{{ $name }}", trusted: true
+{{-   end }}
+{{- end }}
+{{- range $name, $spec := $all }}{{ if and (eq (kindOf $spec) "string") (eq $spec "brew") }}
+brew "{{ $name }}"{{ if contains "/" $name }}, trusted: true{{ end }}{{ end }}{{ end }}
+{{- range $name, $spec := $all }}{{ if and (eq (kindOf $spec) "string") (eq $spec "cask") }}
+cask "{{ $name }}"{{ if contains "/" $name }}, trusted: true{{ end }}{{ end }}{{ end -}}

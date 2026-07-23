@@ -1,6 +1,30 @@
-font-family = FiraCode Nerd Font Mono Reg
-font-feature = -calt, -liga, -dlig
+# Theme config
+theme = Catppuccin Macchiato
+
+# Fonts
+font-family = FiraCode Nerd Font
 font-size = 12
-background-opacity = 0.95
-window-inherit-working-directory = false
-working-directory = home
+font-thicken = false
+
+# macOS specific
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+
+window-padding-balance = false
+window-padding-x = 10
+window-padding-y = 10,2
+
+# Application settings
+auto-update = download
+auto-update-channel = stable
+clipboard-trim-trailing-spaces = true
+shell-integration = detect
+
+# Window settings
+window-height = 45
+window-width = 180
+
+# Cursor settings
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo

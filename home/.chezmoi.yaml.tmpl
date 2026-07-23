@@ -1,3 +1,13 @@
-format: yaml
+{{- /* machine: "work" or "personal". Set once at init and reused thereafter. */ -}}
+{{- $machine := "personal" -}}
+{{- if hasKey . "machine" -}}
+{{-   $machine = .machine -}}
+{{- else if promptBool "Work machine" true -}}
+{{-   $machine = "work" -}}
+{{- end -}}
+{{- $name := promptStringOnce . "name" "Git name" "Nicolas Lecoy" -}}
+{{- $email := promptStringOnce . "email" "Git email" "nicolas.lecoy@gmail.com" -}}
 data:
-  name: "Nicolas Lecoy"
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+  machine: {{ $machine | quote }}

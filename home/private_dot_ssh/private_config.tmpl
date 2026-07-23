@@ -5,21 +5,14 @@ Host *
   IdentityAgent $SSH_AUTH_SOCK
   IdentityFile ~/.ssh/id_ed25519
   IdentityFile ~/.ssh/id_rsa
-{{- if (eq .chezmoi.os "darwin") }}
   IgnoreUnknown UseKeychain
   UseKeychain yes
-{{- end }}
 
-Host 192.168.*.*
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
-Host 172.16.*.*
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
-Host 10.*.*.*
+Host 192.168.*.* 172.16.*.* 10.*.*.*
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
 
+{{- if eq "work" .machine }}
 host *.vra
     User nicolasl
     ServerAliveInterval 300
@@ -32,3 +25,4 @@ host *.b47ch.com
     ServerAliveCountMax 2
     IdentityFile ~/.ssh/id_ed25519
     port 22211
+{{- end }}
