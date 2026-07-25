@@ -3,7 +3,6 @@ set -gx HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/brewfile
 set -gx HOMEBREW_CASK_OPTS --no-quarantine
 set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
 set -gx HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS 1
-set -gx MISE_FISH_AUTO_ACTIVATE 0
 
 for bindir in /usr/local/bin /opt/homebrew/bin
     fish_add_path --global $bindir
@@ -18,6 +17,6 @@ fish_add_path --global /opt/homebrew/opt/curl/bin
 fish_add_path --global /opt/homebrew/opt/gettext/bin
 fish_add_path --global /opt/homebrew/opt/python/libexec/bin
 
-for tool in gdu ggrep gsed gawk gfind
-    fish_add_path --global $HOMEBREW_PREFIX/opt/$tool/libexec/gnubin
+for formula in coreutils findutils grep gnu-sed gnu-tar gnu-indent make
+    fish_add_path --global $HOMEBREW_PREFIX/opt/$formula/libexec/gnubin
 end

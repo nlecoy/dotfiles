@@ -1,3 +1,4 @@
+---
 brew:
   common:
     fluxcd/tap: tap
@@ -8,6 +9,7 @@ brew:
     atuin: brew
     bash: brew
     bat: brew
+    btop: brew
     chezmoi: brew
     cloudflared: brew
     coreutils: brew
@@ -27,6 +29,7 @@ brew:
     gawk: brew
     gettext: brew
     gh: brew
+    git-delta: brew
     git-lfs: brew
     git: brew
     gnu-getopt: brew
@@ -39,7 +42,6 @@ brew:
     gum: brew
     helm: brew
     helmfile: brew
-    htop: brew
     jo: brew
     jq: brew
     just: brew
@@ -50,6 +52,7 @@ brew:
     kubernetes-cli: brew
     kustomize: brew
     lefthook: brew
+    lolcat: brew
     lsd: brew
     make: brew
     minijinja-cli: brew

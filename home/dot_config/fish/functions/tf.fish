@@ -1,3 +1,3 @@
 function tf --wraps=terraform --description 'terraform shorthand'
-    {{ lookPath "terraform" }} $argv
+    command terraform $argv
 end

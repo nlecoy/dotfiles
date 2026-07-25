@@ -17,7 +17,7 @@ if type -q git
 	abbr --command git pf push --force
 	abbr --command git s status -sb
 	abbr --command git ls log --oneline --graph --decorate --all
-	abbr --command git unstage reset HEAD -
+	abbr --command git unstage reset HEAD --
 end
 
 if type -q just

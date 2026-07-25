@@ -1,3 +1,3 @@
 function ms --wraps=mise --description 'mise shorthand'
-    {{ lookPath "mise" }} $argv
+    command mise $argv
 end
