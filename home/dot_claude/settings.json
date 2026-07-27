@@ -1,0 +1,64 @@
+{
+  "model": "opus[1m]",
+  "alwaysThinkingEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "ask": [
+      "Bash(sudo:*)",
+      "Bash(chmod 777:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fd:*)",
+      "Bash(npm publish:*)",
+      "Bash(eval:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/*credential*)",
+      "Read(**/*secret*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(~/.zshrc)",
+      "Read(~/.bashrc)"
+    ]
+  },
+  "enabledPlugins": {
+    "batch-skills@company-tools": true,
+    "engineering-management@company-tools": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "company-tools": {
+      "source": {
+        "source": "github",
+        "repo": "BatchLabs/tools.claude-code-plugins"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/status-line.sh"
+  }
+}
