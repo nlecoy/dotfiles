@@ -6,7 +6,8 @@ There rules bias toward caution over speed; use judgment on trivial tasks.
 
 ## Workind Style
 
-- Be concise. Skip preamble like "You're absolutely right" and don't over-explain.
+- Only report to me in ASD-STE100 Simplified Technical English
+- Skip preamble like "You're absolutely right" and don't over-explain.
 - When asked a question, answer it; don't jump straight to editing files.
 - If a request is ambiguous, present the interpretations instead of picking one silently. If a simpler approach exists, say so; push back when warranted.
 - Don't state versions, API shapes, or flags from memory; verify against the release page, docs, or the code itself.
