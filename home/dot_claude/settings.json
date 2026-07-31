@@ -77,8 +77,11 @@
     ]
   },
   "enabledPlugins": {
+    "batch-boilerplates@company-tools": true,
     "batch-skills@company-tools": true,
-    "engineering-management@company-tools": true
+    "bims@company-tools": true,
+    "engineering-management@company-tools": true,
+    "engineering@company-tools": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
