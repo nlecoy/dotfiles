@@ -1,0 +1,5 @@
+interface:
+  display_name: "Commit"
+  short_description: "Commit with Conventional Commits rules"
+policy:
+  allow_implicit_invocation: false
