@@ -9,3 +9,8 @@
 .config/fish/conf.d/10-homebrew.fish
 .chezmoiscripts/brew-bundle.sh
 {{ end }}
+
+{{ if ne .machine "work" }}
+.sentryclirc
+.agents/skills/sentry
+{{ end }}
