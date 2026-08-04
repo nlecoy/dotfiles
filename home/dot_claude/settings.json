@@ -95,13 +95,19 @@
         "source": "github",
         "repo": "BatchLabs/tools.claude-code-plugins"
       }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
       }
-    }
+    ]
+  },
   },
   "statusLine": {
     "type": "command",

@@ -66,6 +66,7 @@ brew:
     pre-commit: brew
     prettier: brew
     ripgrep: brew
+    rtk: brew
     sd: brew
     shellcheck: brew
     snappy: brew
