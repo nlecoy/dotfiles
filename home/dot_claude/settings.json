@@ -1,81 +1,27 @@
 {
   "model": "opus[1m]",
   "alwaysThinkingEnabled": true,
+  "autoMemoryEnabled": false,
   "attribution": {
     "commit": "",
     "pr": ""
   },
   "cleanupPeriodDays": 30,
-  "permissions": {
-    "ask": [
-      "Bash(sudo:*)",
-      "Bash(chmod 777:*)",
-      "Bash(git push --force:*)",
-      "Bash(git push -f:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(git clean -fd:*)",
-      "Bash(npm publish:*)",
-      "Bash(eval:*)"
-    ],
-    "deny": [
-      "Bash(bash *)",
-      "Bash(sh *)",
-      "Bash(sudo *)",
-      "Bash(dd *)",
-      "Bash(mkfs *)",
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(rm -Rf *)",
-      "Bash(rm -fR *)",
-      "Bash(rm -r -f *)",
-      "Bash(rm -f -r *)",
-      "Bash(chmod 777 *)",
-      "Bash(chmod -R 777 *)",
-      "Bash(chown -R *)",
-      "Bash(> /dev/sda *)",
-      "Bash(format *)",
-      "Bash(apt-get install *)",
-      "Bash(brew install *)",
-      "Bash(bundle install *)",
-      "Bash(gem install *)",
-      "Bash(npm install -g *)",
-      "Bash(pip install *)",
-      "Bash(yum install *)",
-      "Bash(git clean *)",
-      "Bash(git config *)",
-      "Bash(git branch -D *)",
-      "Bash(git push --force *)",
-      "Bash(git push -f *)",
-      "Bash(git restore *)",
-      "Bash(gh api --method DELETE *)",
-      "Bash(gh auth logout *)",
-      "Bash(gh auth refresh *)",
-      "Bash(gh gist create *)",
-      "Bash(gh gist delete *)",
-      "Bash(gh gpg-key add *)",
-      "Bash(gh gpg-key delete *)",
-      "Bash(gh release create *)",
-      "Bash(gh release delete *)",
-      "Bash(gh release upload *)",
-      "Bash(gh repo archive *)",
-      "Bash(gh repo clone *)",
-      "Bash(gh repo create *)",
-      "Bash(gh repo delete *)",
-      "Bash(gh repo deploy-key *)",
-      "Bash(gh repo edit *)",
-      "Bash(gh repo fork *)",
-      "Bash(gh repo rename *)",
-      "Bash(gh repo sync *)",
-      "Bash(gh repo unarchive *)",
-      "Bash(gh secret delete *)",
-      "Bash(gh secret set *)",
-      "Bash(gh ssh-key add *)",
-      "Bash(gh ssh-key delete *)",
-      "Bash(gh workflow disable *)",
-      "Bash(gh workflow enable *)",
-      "Bash(gh workflow run *)"
-    ]
-  },
+  "disableArtifact": true,
+  "disableBundledSkills": true,
+  "disableClaudeAiConnectors": true,
+  "disableRemoteControl": true,
+  "disableWorkflows": true,
+  "deniedMcpServers": [
+    { "serverUrl": "https://mcp.slack.com/*" },
+    { "serverUrl": "https://mcp.figma.com/*" },
+    { "serverUrl": "https://gmailmcp.googleapis.com/*" },
+    { "serverUrl": "https://mcp.vercel.com/*" },
+    { "serverUrl": "https://mcp.zapier.com/*" },
+    { "serverUrl": "https://batch.mcp.chargebee.com/*" },
+    { "serverUrl": "https://mcp.eu.chargebee.com/*" },
+    { "serverUrl": "https://mcp2.readwise.io/*" }
+  ],
   "enabledPlugins": {
     "batch-boilerplates@company-tools": true,
     "batch-skills@company-tools": true,
@@ -95,6 +41,8 @@
         "source": "github",
         "repo": "BatchLabs/tools.claude-code-plugins"
       }
+    }
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -108,6 +56,22 @@
       }
     ]
   },
+  "permissions": {
+    "deny": [
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "DesignSync",
+      "NotebookEdit",
+      "SendMessage",
+      "PushNotification",
+      "RemoteTrigger",
+      "ReportFindings",
+      "ScheduleWakeup",
+      "AskUserQuestion",
+      "CronCreate",
+      "CronDelete",
+      "CronList"
+    ]
   },
   "statusLine": {
     "type": "command",
