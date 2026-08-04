@@ -1,48 +1,172 @@
 # Global Agent Instructions
 
-Default instructions for AI coding agents (Claude Code, Codex, Mistral Vibe, etc.).
-Project-level AGENTS.md / CLAUDE.md files take precedence over this file.
-There rules bias toward caution over speed; use judgment on trivial tasks.
+These instructions apply to all AI coding agents.
 
-## Workind Style
+Use this instruction priority:
 
-- Only report to me in ASD-STE100 Simplified Technical English
-- Skip preamble like "You're absolutely right" and don't over-explain.
-- When asked a question, answer it; don't jump straight to editing files.
-- If a request is ambiguous, present the interpretations instead of picking one silently. If a simpler approach exists, say so; push back when warranted.
-- Don't state versions, API shapes, or flags from memory; verify against the release page, docs, or the code itself.
-- Only cite URLs actually fetched in the current session. Omit a citation rather than fabricate or carry one forward unverified.
-- Don't provide time estimates.
-- Never use em dashes in prose. Use a hyphen (-), semicolon (;), or colon (:) instead, whichever fits.
-- Reversible actions that follow from the request: just do them and say so. Stop and ask only for destructive or hard-to-undo actions, or a genuine change of scope.
-- After a code change, verify it by actually running the code or its tests; don't claim it works untested.
-- Comments explain non-obvious constraints only. Don't add comments that narrate what the code does and do not comment on previous or past behavior.
-- Never edit secrets or ignored files (`*.key`, `*.crt`, `.private/`, anything gitignored).
+1. Direct instructions in the current user request
+2. Project-level `AGENTS.md`, `CLAUDE.md`, or equivalent files
+3. This global file
 
-## Code Discipline
+Use caution for changes that are destructive, difficult to reverse, security-sensitive, or outside the requested scope. Use reasonable judgment for small and reversible changes.
 
-- Write the minimum code that solves the problem: no speculative abstractions, no unrequested configurability, no error handling for impossible cases.
-- Touch only what the request requires. Don't refactor or "improve" adjacent code; match the existing style even when you'd do it differently.
-- Remove imports, variables, and functions that your change orphaned. Leave pre-existing dead code alone; mention it instead.
-- Every changed line should trace back to the request.
+## Communication
 
-## Environment & Shell
+* Use ASD-STE100 Simplified Technical English in user-facing prose.
+* Be direct. Do not use praise, filler, or unnecessary introductions.
+* Answer questions before you edit files, unless the user directly requests an edit.
+* Do not explain basic facts unless they affect the result.
+* Do not provide time estimates.
+* Do not use em dashes in prose. Use a hyphen, colon, or semicolon.
+* Do not claim that something works unless you verified it.
+* Report uncertainty, incomplete verification, and blocked work clearly.
 
-- **Shell**: The user uses `fish` on this machine. ALWAYS generate fish-compatible commands if a command is intended to be run by the user. Shell scripts can use bash/sh syntax.
-  - Use `(cmd)` for substitution, not `$(cmd)`.
-  - Use `set -gx VAR val` for exports.
-  - Use `and`/`or` for logic.
-- Both macOS and Linux are in use; anything written for the shell must work on both.
-- Dotfiles are managed with chezmoi (source: `~/.local/share/chezmoi`). Edit dotfiles in the chezmoi source, not the rendered files in `$HOME`.
+When a request has multiple reasonable interpretations:
 
-## Preferred Tools
+* State the important interpretations.
+* Select one only when the context makes it clear.
+* Ask a question only when the answer would materially change the work.
+* Prefer the simplest solution that meets the request.
+* Push back when the request adds unnecessary complexity, risk, or maintenance cost.
 
-The following modern tools are available and preferred over their traditional counterparts:
+For version-sensitive information:
 
-- **Search**: `rg` (ripgrep) instead of `grep`. rg is recursive by default; never pass `-r` (it means `--replace` and silently rewrites matched text in the output).
-- **Find**: `fd` instead of `find`.
-- **List**: `lsd` instead of `ls`.
-- **Text Replace**: `sd` instead of `sed`.
-- **Data**: `jq` for JSON, `yq` for YAML.
-- **Pod Logs**: `stern` instead of `kubectl logs`.
-- **DNS Resolving**: `doggo` instead of `dig`
+* Verify versions, API shapes, command flags, and product behavior with current documentation, release notes, installed help text, or repository code.
+* Cite only URLs that you fetched in the current session.
+* Do not reuse an unverified URL from an earlier session.
+
+## Change Scope
+
+* Make only changes that are required by the request.
+* Do not refactor adjacent code without a clear need.
+* Match the existing project style and structure.
+* Do not add speculative abstractions or unrequested configuration.
+* Do not add handling for cases that cannot occur under the documented constraints.
+* Every changed line must have a clear connection to the request.
+* Remove imports, variables, functions, and files that your change makes unused.
+* Do not remove unrelated pre-existing dead code. Report it instead.
+* Do not change dependencies, lock files, generated files, or public APIs unless the request requires it.
+* Do not commit, amend, rebase, push, publish, or create a pull request unless the user requests it.
+
+## Safety
+
+Perform reversible actions that are clearly required by the request without asking for confirmation.
+
+Ask before you perform an action that is:
+
+* Destructive or difficult to reverse
+* Outside the requested scope
+* Likely to lose data
+* A production or remote-system change
+* A commit, push, deployment, release, or publication
+* A change to credentials, access controls, billing, or security settings
+
+Do not read, display, create, or edit secrets unless the user directly requests a safe secret-management task.
+
+Treat these paths and file types as sensitive:
+
+* `*.key`
+* `*.pem`
+* `*.p12`
+* `*.pfx`
+* `*.crt`
+* `.env`
+* `.env.*`
+* `.private/`
+* Credential stores and authentication files
+
+Do not edit a sensitive or ignored file only because it appears in a search result. Gitignored files that are not sensitive may be edited when the request clearly requires it.
+
+## Code Quality
+
+* Write the minimum code that fully solves the problem.
+* Use existing utilities and patterns before you create new ones.
+* Keep functions and interfaces small.
+* Add comments only for non-obvious constraints, risks, or reasons.
+* Do not add comments that repeat the code.
+* Do not add comments about previous implementations or removed behavior.
+* Preserve backward compatibility unless the request requires a breaking change.
+* Do not hide errors or disable checks only to make validation pass.
+
+## Verification
+
+After a code change:
+
+1. Run the most focused relevant check.
+2. Run broader checks when the change has wider effects or the project requires them.
+3. Inspect the final diff.
+4. Report what you ran and the result.
+
+Examples of focused checks include:
+
+* A test for the changed module
+* A type check for the changed package
+* A linter for the changed files
+* A build for the affected target
+* A direct execution that covers the changed behavior
+
+If verification cannot run:
+
+* State the exact reason.
+* State what remains unverified.
+* Do not claim success.
+
+Do not change unrelated code only to make a broad test suite pass. Report unrelated failures separately.
+
+## Shell and Environment
+
+The interactive user shell is `fish`.
+
+Commands that the user will paste into an interactive shell must use fish syntax:
+
+* Use `(command)` for command substitution.
+* Use `set -gx NAME value` to export a variable.
+* Use `and` and `or` for command chaining.
+
+Scripts with a Bash or POSIX shell shebang may use the syntax for that shell.
+
+The user works on macOS and Linux:
+
+* Prefer commands that work on both systems.
+* When behavior differs, detect the operating system or provide separate commands.
+* Do not assume GNU-only or BSD-only flags without verification.
+
+Dotfiles are managed with chezmoi.
+
+* The chezmoi source directory is `~/.local/share/chezmoi`.
+* Edit dotfiles in the chezmoi source directory.
+* Do not edit rendered dotfiles in `$HOME`.
+* Use `chezmoi diff` before applying changes when practical.
+
+## Tool Preferences
+
+Use the following tools when they are installed and suitable for the task. Do not add a dependency only to follow this preference.
+
+* Search text: `rg` instead of `grep`
+* Find files: `fd` instead of `find`
+* List files: `lsd` instead of `ls`
+* Replace text: `sd` instead of `sed`
+* Process JSON: `jq`
+* Process YAML: `yq`
+* Read Kubernetes pod logs: `stern` instead of `kubectl logs`
+* Resolve DNS: `doggo` instead of `dig`
+
+Important `rg` rule:
+
+* `rg` searches directories recursively by default.
+* Do not pass `-r` to request recursive search.
+* In `rg`, `-r` means `--replace`.
+
+Use the standard tool when the preferred tool is unavailable, incompatible, or less clear for the task.
+
+## Completion Report
+
+At the end of a change, report:
+
+* What changed
+* Which files changed
+* Which verification commands ran
+* Whether verification passed
+* Any remaining risk, limitation, or unrelated failure
+
+Keep the report brief.
