@@ -42,6 +42,7 @@ brew:
     gum: brew
     helm: brew
     helmfile: brew
+    hunk: brew
     jo: brew
     jq: brew
     just: brew
