@@ -73,10 +73,10 @@
       "CronList"
     ]
   },
+  "respectGitignore": true,
   "statusLine": {
     "type": "command",
     "command": "~/.claude/status-line.sh",
     "refreshInterval": 30
-  },
-  "respectGitignore": true
+  }
 }

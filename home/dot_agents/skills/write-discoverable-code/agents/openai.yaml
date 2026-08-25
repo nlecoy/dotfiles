@@ -1,0 +1,5 @@
+interface:
+  display_name: "Write Discoverable Code"
+  short_description: "Rules for writing code that coding agents (and humans) can find and understand through plain-text search"
+policy:
+  allow_implicit_invocation: true
