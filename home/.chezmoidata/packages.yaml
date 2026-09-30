@@ -1,12 +1,14 @@
 ---
 brew:
   common:
+    common-fate/granted: tap
     fluxcd/tap: tap
     grafana/grafana: tap
     hashicorp/tap: tap
     home-operations/tap: tap
     ansible: brew
     atuin: brew
+    awscli: brew
     bash: brew
     bat: brew
     btop: brew
@@ -38,6 +40,7 @@ brew:
     gnu-tar: brew
     go: brew
     golangci-lint: brew
+    granted: brew
     grep: brew
     gum: brew
     helm: brew
@@ -66,6 +69,7 @@ brew:
     pnpm: brew
     pre-commit: brew
     prettier: brew
+    qemu: brew
     ripgrep: brew
     rtk: brew
     sd: brew
