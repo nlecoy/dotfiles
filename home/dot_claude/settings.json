@@ -24,10 +24,10 @@
   ],
   "enabledPlugins": {
     "batch-boilerplates@company-tools": false,
-    "batch-skills@company-tools": false,
+    "batch-skills@company-tools": true,
     "bims@company-tools": false,
     "engineering-management@company-tools": false,
-    "engineering@company-tools": false
+    "engineering@company-tools": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {

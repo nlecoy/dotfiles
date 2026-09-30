@@ -182,6 +182,7 @@
   },
   // -- Java --
   "java.format.enabled": false,
+  "files.hotExit": "off",
   "filewatcher.commands": [
     {
       "match": "\\.java",
@@ -195,5 +196,25 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": true
+  },
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://spec.openapis.org/": true,
+    "https://www.schemastore.org/": true
   }
 }

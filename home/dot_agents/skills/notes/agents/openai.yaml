@@ -1,0 +1,3 @@
+interface:
+  display_name: "Notes"
+  short_description: "Record and query project notes in a Git-backed journal"
